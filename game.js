@@ -31,27 +31,28 @@ class car{
     draw(){
         c.fillStyle = "green";
         c.fillRect(this.positionX, this.positionY, this.width, this.height);
+
+
     }
 
     update(){
         this.draw();
+        // c.translate(Car1.getXCenter(), Car1.getYCenter());
+        c.rotate(.05);
+        // c.translate(this.positionX, this.positionY);
     }
 
 }
 
 
-const Car1 = new car(50, 50, 0, 'blue', 100, 25);
-console.log(Car1.getXCenter());
-console.log(Car1.getYCenter());
+const Car1 = new car(35, 35, 0, 'blue', 100, 25);
 
 Car1.draw();
 
 function animate(){
      // makes a function that calls itself and will run infinitely 
-    setTimeout(() =>{
-        window.requestAnimationFrame(animate);
-    }, 25);
-    c.fillStyle = 'black' // sets background color
+    window.requestAnimationFrame(animate);
+    c.fillStyle = 'black'; // sets background color
     c.fillRect(0, 0, canvas.width, canvas.height); // redraws background
     Car1.update();
 }
