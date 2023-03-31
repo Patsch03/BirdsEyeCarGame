@@ -36,10 +36,8 @@ class car{
     }
 
     update(){
-        this.draw();
-        // c.translate(Car1.getXCenter(), Car1.getYCenter());
-        c.rotate(.05);
-        // c.translate(this.positionX, this.positionY);
+        // scraping the rotation idea for now just drawing a car that can move left, right, up, down.
+        // adding rotation in the future after further research, changing update function into 2D non dynamic movement
     }
 
 }
