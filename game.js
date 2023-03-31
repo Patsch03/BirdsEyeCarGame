@@ -4,6 +4,8 @@ const c = canvas.getContext('2d');
 canvas.width = 1000;
 canvas.height = 700;
 
+
+
 c.fillRect(0, 0, canvas.width, canvas.height);
 
 class car{
@@ -16,10 +18,19 @@ class car{
         this.color = color;
     };
 
+    getXCenter(){
+        let x = this.positionX + (this.width / 2);
+        return x;
+    }
+
+    getYCenter(){
+        let y = this.positionY + (this.height / 2);
+        return y;
+    }
+
     draw(){
         c.fillStyle = "green";
         c.fillRect(this.positionX, this.positionY, this.width, this.height);
-        console.log("draw");
     }
 
     update(){
@@ -30,10 +41,16 @@ class car{
 
 
 const Car1 = new car(50, 50, 0, 'blue', 100, 25);
+console.log(Car1.getXCenter());
+console.log(Car1.getYCenter());
+
 Car1.draw();
 
 function animate(){
-    window.requestAnimationFrame(animate); // makes a function that calls itself and will run infinitely 
+     // makes a function that calls itself and will run infinitely 
+    setTimeout(() =>{
+        window.requestAnimationFrame(animate);
+    }, 25);
     c.fillStyle = 'black' // sets background color
     c.fillRect(0, 0, canvas.width, canvas.height); // redraws background
     Car1.update();
