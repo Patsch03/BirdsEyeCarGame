@@ -32,37 +32,23 @@ class car{
         c.fillStyle = "green";
         c.fillRect(this.positionX, this.positionY, this.width, this.height);
 
+        c.clearRect(0, 0, canvas.width, canvas.height);
+        c.save();
+        c.translate(this.positionX + this.width / 2, this.positionY + this.height / 2);
+        c.rotate((rotationAngle * Math.PI) / 180);
+        c.fillStyle = "green";
+        c.fillRect( -this.width / 2, -this.height / 2, this.width, this.height);
+        c.restore();
 
     }
 
     update(){
         // scraping the rotation idea for now just drawing a car that can move left, right, up, down.
         // adding rotation in the future after further research, changing update function into 2D non dynamic movement
-
-		// Define the initial position and dimensions of the rectangle
-		let rectX = 50;
-		let rectY = 50;
-		let rectWidth = 100;
-		let rectHeight = 50;
-
-		// Set the rotation angle in degrees
 		let rotationAngle = 0;
-
-		// Draw the rectangle
-		function drawRect() {
-			c.clearRect(0, 0, canvas.width, canvas.height);
-			c.save();
-			c.translate(rectX + rectWidth / 2, rectY + rectHeight / 2);
-			c.rotate((rotationAngle * Math.PI) / 180);
-			c.fillStyle = "#FF0000";
-			c.fillRect(-rectWidth / 2, -rectHeight / 2, rectWidth, rectHeight);
-			c.restore();
-		}
-
-		// Rotate the rectangle by a given angle
 		function rotateRect(angle) {
 			rotationAngle += angle;
-			drawRect();
+			draw();
 		}
 
 		// Set an interval to rotate the rectangle continuously
